@@ -147,3 +147,24 @@ def ordered_dithering(image_file):
             pixel[x, y] = red_newpixel, green_newpixel, blue_newpixel
 
     new_img.save('../dithered_ordered.jpg')
+
+
+def floyd_steinberg_without_error_diffusion(image_file):
+    new_img = Image.open(image_file)
+
+    new_img = new_img.convert('RGB')
+    pixel = new_img.load()
+
+    x_lim, y_lim = new_img.size
+
+    for y in range(1, y_lim):
+        for x in range(1, x_lim):
+            red_oldpixel, green_oldpixel, blue_oldpixel = pixel[x, y]
+
+            red_newpixel = apply_threshold(red_oldpixel)
+            green_newpixel = apply_threshold(green_oldpixel)
+            blue_newpixel = apply_threshold(blue_oldpixel)
+
+            pixel[x, y] = red_newpixel, green_newpixel, blue_newpixel
+
+    new_img.save('../dithered_floyd_steinberg_without_error.jpg')

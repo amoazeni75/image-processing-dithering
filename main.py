@@ -15,6 +15,7 @@ def main():
     # Q1.convert_gray_bin(image_raw)
     # Q2.dither_matrix()
     Q2.floyd_steinberg_dither('../cheetah-640x480.jpg')
+    Q2.floyd_steinberg_without_error_diffusion('../cheetah-640x480.jpg')
     Q2.ordered_dithering('../cheetah-640x480.jpg')
 
 
